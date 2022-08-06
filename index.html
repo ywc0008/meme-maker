@@ -78,12 +78,15 @@
     </div>
 
     <canvas></canvas>
-    <input type="range" id="line-width" min="1" max="10" value="6" />
+    <input type="range" id="line-width" min="1" max="10" value="6" step="0.5" />
     <button id="mode">🎨면으로 그리기</button>
     <button id="fill-all">🩸채우기</button>
     <button id="eraser">지우개</button>
     <button id="destroy">🧨초기화</button>
-
+    <input type="file" id="file" accept="image/*" />
+    <input type="text" id="text" placeholder="문구를 적으세요" />
+    <input type="range" min="10" max="100" step="5" value="55" />
+    <button id="save">Save the image</button>
     <script src="js/app.js"></script>
   </body>
 </html>

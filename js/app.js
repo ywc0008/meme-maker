@@ -69,10 +69,10 @@ let isFilling = false;
 function changeMode() {
   if (isFilling === false) {
     isFilling = true;
-    mode.innerText = "🎨면으로 그리기";
+    mode.innerText = "🎨선으로 그리기";
   } else {
     isFilling = false;
-    mode.innerText = "🎨선으로 그리기";
+    mode.innerText = "🎨면으로 그리기";
   }
 }
 
@@ -104,6 +104,35 @@ const destroy = document.querySelector("#destroy");
 function onDestroy() {
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = color.value;
 }
 
 destroy.addEventListener("click", onDestroy);
+
+//사진 넣기, 저장
+const fileInput = document.querySelector("#file");
+const save = document.querySelector("#save");
+
+function addFile(event) {
+  const file = event.target.files[0];
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.src = url;
+  img.onload = function () {
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  };
+}
+function saveImg() {
+  const url = canvas.dataset.URL;
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "Saved Image.png";
+  a.click();
+}
+
+fileInput.addEventListener("change", addFile);
+save.addEventListener("click", saveImg);
+
+//텍스트 넣기
+
+//폰트사이즈 조절
