@@ -8,8 +8,8 @@
     <title>짤 생성기</title>
   </head>
   <body>
-    <input type="color" id="color" />
     <div id="colors">
+      <input type="color" id="color" />
       <div
         data-color="#2d3436"
         class="color-option"
@@ -56,11 +56,6 @@
         style="background-color: #ffeaa7"
       ></div>
       <div
-        data-color="#6c5ce7"
-        class="color-option"
-        style="background-color: #6c5ce7"
-      ></div>
-      <div
         data-color="#0984e3"
         class="color-option"
         style="background-color: #0984e3"
@@ -78,15 +73,39 @@
     </div>
 
     <canvas></canvas>
-    <input type="range" id="line-width" min="1" max="10" value="6" step="0.5" />
-    <button id="mode">🎨면으로 그리기</button>
-    <button id="fill-all">🩸채우기</button>
-    <button id="eraser">지우개</button>
-    <button id="destroy">🧨초기화</button>
-    <input type="file" id="file" accept="image/*" />
-    <input type="text" id="text" placeholder="문구를 적으세요" />
-    <input type="range" min="10" max="100" step="5" value="55" />
-    <button id="save">Save the image</button>
+    <div id="btns">
+      <input
+        type="range"
+        id="line-width"
+        min="1"
+        max="10"
+        value="6"
+        step="0.5"
+      />
+      <button class="btn" id="mode">🎨면으로 그리기</button>
+      <button class="btn" id="fill-all">💧채우기</button>
+      <button class="btn" id="eraser">
+        <i class="fas fa-eraser fa-lg"></i>지우개
+      </button>
+      <button class="btn" id="destroy">🧨초기화</button>
+      <label class="btn" for="file">🖼파일 추가하기</label>
+      <input type="file" id="file" accept="image/*" />
+      <label for="font-size">폰트 크기</label>
+      <input
+        type="range"
+        min="10"
+        max="100"
+        step="5"
+        value="55"
+        id="font-size"
+      />
+      <input type="text" id="text" placeholder="추가 할 문구를 적으세요" />
+      <button class="btn" id="save">💾짤 저장하기</button>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/c49955fb2c.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/app.js"></script>
   </body>
 </html>

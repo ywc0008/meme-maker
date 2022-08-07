@@ -54,7 +54,8 @@ colorOptions.forEach((color) =>
 
 //선 굵기 구현
 const lineWidth = document.querySelector("#line-width");
-ctx.lineWidth = lineWidth.value;
+ctx.lineWidth = 6;
+ctx.lineCap = "round";
 
 function changeLineWidth(event) {
   ctx.lineWidth = event.target.value;
@@ -123,16 +124,33 @@ function addFile(event) {
   };
 }
 function saveImg() {
-  const url = canvas.dataset.URL;
+  const url = canvas.toDataURL();
   const a = document.createElement("a");
   a.href = url;
-  a.download = "Saved Image.png";
+  a.download = "저장된 사진.jpg";
   a.click();
 }
 
 fileInput.addEventListener("change", addFile);
 save.addEventListener("click", saveImg);
 
-//텍스트 넣기
+//텍스트 넣기, 폰트사이즈 조절
+const textInput = document.querySelector("#text");
+const fontSize = document.querySelector("#font-size");
 
-//폰트사이즈 조절
+function addText(event) {
+  if (textInput !== "") {
+    ctx.save();
+    const text = textInput.value;
+    ctx.font = `${fontSize.value}px selif`;
+    ctx.fillText(text, event.offsetX, event.offsetY);
+    function changeFontSize(event) {
+      ctx.font = `${event.target.value} selif`;
+    }
+
+    fontSize.addEventListener("change", changeFontSize);
+    ctx.restore();
+  }
+}
+
+canvas.addEventListener("dblclick", addText);
